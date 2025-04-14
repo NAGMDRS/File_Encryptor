@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <sys/wait.h>
-// #include "../encryptyDecrypt"
+#include "../encryptDecrypt/cryption.hpp"
 
 ProcessManagement::ProcessManagement(){}
 
@@ -17,5 +17,6 @@ void ProcessManagement::executeTask(){
         taskQueue.pop();
 
         std::cout << "Executing Task: " << taskToExe->toString() << std::endl;
+        executeCryption(taskToExe->toString());
     }
 }

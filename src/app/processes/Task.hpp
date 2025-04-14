@@ -1,4 +1,4 @@
-#pragma once;
+#pragma once
 
 #include <fstream>
 #include <sstream>
@@ -24,8 +24,7 @@ struct Task
     std::string toString()
     {
         std::ostringstream oss;
-        oss << filePath << ',' << (action == Action::ENCRYPT) ? "ENCRYPT" : "DECRYPT";
-
+        oss << filePath << ',' << (action == Action::ENCRYPT ? "ENCRYPT" : "DECRYPT");
         return oss.str();
     }
 
@@ -34,10 +33,11 @@ struct Task
         std::istringstream iss(input);
         std::string filePath;
         std::string action;
+        
 
         if (std::getline(iss, filePath, ',') && std::getline(iss, action))
         {
-            Action act = (action == "ENCRYPT")? Action::ENCRYPT: Action::DECRYPT;
+            Action act = (action == "ENCRYPT" ? Action::ENCRYPT: Action::DECRYPT);
             IO io(filePath);
             std::fstream f_stream = std::move(io.getFileStream());
             if(f_stream.is_open()){
